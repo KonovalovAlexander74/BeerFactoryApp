@@ -1,0 +1,6 @@
+framework module Pods_BeerFactoryApp {
+  umbrella header "Pods-BeerFactoryApp-umbrella.h"
+
+  export *
+  module * { export * }
+}
