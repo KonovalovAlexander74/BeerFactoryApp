@@ -11,7 +11,7 @@ import SwiftUI
 struct BeerFactoryAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LoginPageView()
 //                .environmentObject(ProductViewModel())
 //                .environmentObject(CustomerViewModel())
         }

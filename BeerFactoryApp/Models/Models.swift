@@ -10,47 +10,57 @@ import SwiftUI
 
 
 //MARK: Product
-struct ProductData: Decodable {
-    let error: Bool
-    let message: String
-    let data: [Product]
+struct ProductData: Codable {
+    let error: Bool?
+    let message: String?
+    let data: [Product]?
 }
 
-struct Product: Decodable {
+struct Product: Codable {
     let id: Int
-    let typeId: Int
     let name: String
-    let alcohol: Float
+    let alcohol: Double
     let price: Int
+    let type: String
+}
+
+//MARK: Order's Product
+struct OrderProductData: Codable {
+    let error: Bool
+    let message: String
+    let data: [OrderProduct]
+}
+
+struct OrderProduct: Codable {
+    let id: Int
+    let name: String
+    let price: Int
+    let quantity: Int
 }
 
 //MARK: Customer
-struct CustomerData: Decodable {
+struct CustomerData: Codable {
     let error: Bool
     let message: String
     let data: Customer
 }
 
-struct Customer: Decodable {
+struct Customer: Codable {
     let id: Int
     let userId: Int
     let fullName: String
     let phoneNumber: String
     let passport: String
-    let login: String
-    let password: String
 }
 
 //MARK: Order
-struct OrderData: Decodable {
+struct OrderData: Codable {
     let error: Bool
     let message: String
     let data: [Order]
 }
 
-struct Order: Decodable {
+struct Order: Codable {
     let id: Int
     let status: String
 }
-
-

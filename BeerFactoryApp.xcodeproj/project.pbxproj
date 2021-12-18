@@ -10,13 +10,21 @@
 		112663E3274E559200EF9B33 /* CustomerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112663E2274E559200EF9B33 /* CustomerView.swift */; };
 		1144E25E274E99330039B2C3 /* CustomerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1144E25D274E99330039B2C3 /* CustomerViewModel.swift */; };
 		1162E187274A4FDE002CE720 /* BeerFactoryAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162E186274A4FDE002CE720 /* BeerFactoryAppApp.swift */; };
-		1162E189274A4FDE002CE720 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162E188274A4FDE002CE720 /* ContentView.swift */; };
+		1162E189274A4FDE002CE720 /* LoginPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162E188274A4FDE002CE720 /* LoginPageView.swift */; };
 		1162E18B274A4FE1002CE720 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1162E18A274A4FE1002CE720 /* Assets.xcassets */; };
 		1162E18E274A4FE1002CE720 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1162E18D274A4FE1002CE720 /* Preview Assets.xcassets */; };
 		1162E195274A50E1002CE720 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162E194274A50E1002CE720 /* Models.swift */; };
-		1162E197274A5237002CE720 /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162E196274A5237002CE720 /* ProductViewModel.swift */; };
+		1162E197274A5237002CE720 /* NewOrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162E196274A5237002CE720 /* NewOrderViewModel.swift */; };
+		116A8F502764DBCE009F86DD /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116A8F4F2764DBCE009F86DD /* LoginViewModel.swift */; };
+		116A8F522765254E009F86DD /* ProductListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116A8F512765254E009F86DD /* ProductListViewModel.swift */; };
+		116A8F5427667DBC009F86DD /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116A8F5327667DBC009F86DD /* RegisterViewModel.swift */; };
+		116A8F5627667EDC009F86DD /* RegisterPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116A8F5527667EDC009F86DD /* RegisterPageView.swift */; };
 		11736DD9274F87640066F9F6 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11736DD8274F87640066F9F6 /* WebService.swift */; };
-		11736DDB274F9B2D0066F9F6 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11736DDA274F9B2D0066F9F6 /* OrderViewModel.swift */; };
+		11736DDB274F9B2D0066F9F6 /* OrderDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11736DDA274F9B2D0066F9F6 /* OrderDetailViewModel.swift */; };
+		1176048E27510DE300E9CBB6 /* NewOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1176048D27510DE300E9CBB6 /* NewOrderView.swift */; };
+		11E3097C276CEEBF00728A3F /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E3097B276CEEBF00728A3F /* CartView.swift */; };
+		11E3097E276DE0BA00728A3F /* ProductInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E3097D276DE0BA00728A3F /* ProductInfoView.swift */; };
+		11E30980276DEDB700728A3F /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E3097F276DEDB600728A3F /* CartViewModel.swift */; };
 		A14F194BEB6CCFBA910DFE03 /* Pods_BeerFactoryApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6574E818C5445FBD40C6FE6 /* Pods_BeerFactoryApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,14 +33,22 @@
 		1144E25D274E99330039B2C3 /* CustomerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerViewModel.swift; sourceTree = "<group>"; };
 		1162E183274A4FDE002CE720 /* BeerFactoryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeerFactoryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1162E186274A4FDE002CE720 /* BeerFactoryAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerFactoryAppApp.swift; sourceTree = "<group>"; };
-		1162E188274A4FDE002CE720 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1162E188274A4FDE002CE720 /* LoginPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageView.swift; sourceTree = "<group>"; };
 		1162E18A274A4FE1002CE720 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1162E18D274A4FE1002CE720 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1162E194274A50E1002CE720 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		1162E196274A5237002CE720 /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
+		1162E196274A5237002CE720 /* NewOrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrderViewModel.swift; sourceTree = "<group>"; };
 		1162E198274A5C0C002CE720 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		116A8F4F2764DBCE009F86DD /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		116A8F512765254E009F86DD /* ProductListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewModel.swift; sourceTree = "<group>"; };
+		116A8F5327667DBC009F86DD /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		116A8F5527667EDC009F86DD /* RegisterPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPageView.swift; sourceTree = "<group>"; };
 		11736DD8274F87640066F9F6 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
-		11736DDA274F9B2D0066F9F6 /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
+		11736DDA274F9B2D0066F9F6 /* OrderDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailViewModel.swift; sourceTree = "<group>"; };
+		1176048D27510DE300E9CBB6 /* NewOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrderView.swift; sourceTree = "<group>"; };
+		11E3097B276CEEBF00728A3F /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		11E3097D276DE0BA00728A3F /* ProductInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoView.swift; sourceTree = "<group>"; };
+		11E3097F276DEDB600728A3F /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		353EFC09980D6602A95AEC04 /* Pods-BeerFactoryApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeerFactoryApp.release.xcconfig"; path = "Target Support Files/Pods-BeerFactoryApp/Pods-BeerFactoryApp.release.xcconfig"; sourceTree = "<group>"; };
 		E6574E818C5445FBD40C6FE6 /* Pods_BeerFactoryApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeerFactoryApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB713CB916696F1649B2666F /* Pods-BeerFactoryApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeerFactoryApp.debug.xcconfig"; path = "Target Support Files/Pods-BeerFactoryApp/Pods-BeerFactoryApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -72,12 +88,11 @@
 			isa = PBXGroup;
 			children = (
 				1162E198274A5C0C002CE720 /* Info.plist */,
+				1162E186274A4FDE002CE720 /* BeerFactoryAppApp.swift */,
 				11736DD7274F87440066F9F6 /* WebServices */,
 				11736DDC274F9B380066F9F6 /* ViewModels */,
-				1162E186274A4FDE002CE720 /* BeerFactoryAppApp.swift */,
-				112663E2274E559200EF9B33 /* CustomerView.swift */,
-				1162E188274A4FDE002CE720 /* ContentView.swift */,
-				1162E194274A50E1002CE720 /* Models.swift */,
+				116A8F4D2764D621009F86DD /* Views */,
+				116A8F4E2764D637009F86DD /* Models */,
 				1162E18A274A4FE1002CE720 /* Assets.xcassets */,
 				1162E18C274A4FE1002CE720 /* Preview Content */,
 			);
@@ -92,6 +107,27 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		116A8F4D2764D621009F86DD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				112663E2274E559200EF9B33 /* CustomerView.swift */,
+				1176048D27510DE300E9CBB6 /* NewOrderView.swift */,
+				1162E188274A4FDE002CE720 /* LoginPageView.swift */,
+				116A8F5527667EDC009F86DD /* RegisterPageView.swift */,
+				11E3097B276CEEBF00728A3F /* CartView.swift */,
+				11E3097D276DE0BA00728A3F /* ProductInfoView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		116A8F4E2764D637009F86DD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1162E194274A50E1002CE720 /* Models.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		11736DD7274F87440066F9F6 /* WebServices */ = {
 			isa = PBXGroup;
 			children = (
@@ -104,8 +140,12 @@
 			isa = PBXGroup;
 			children = (
 				1144E25D274E99330039B2C3 /* CustomerViewModel.swift */,
-				1162E196274A5237002CE720 /* ProductViewModel.swift */,
-				11736DDA274F9B2D0066F9F6 /* OrderViewModel.swift */,
+				1162E196274A5237002CE720 /* NewOrderViewModel.swift */,
+				11736DDA274F9B2D0066F9F6 /* OrderDetailViewModel.swift */,
+				116A8F4F2764DBCE009F86DD /* LoginViewModel.swift */,
+				116A8F5327667DBC009F86DD /* RegisterViewModel.swift */,
+				116A8F512765254E009F86DD /* ProductListViewModel.swift */,
+				11E3097F276DEDB600728A3F /* CartViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -124,7 +164,6 @@
 				EB713CB916696F1649B2666F /* Pods-BeerFactoryApp.debug.xcconfig */,
 				353EFC09980D6602A95AEC04 /* Pods-BeerFactoryApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -242,14 +281,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				116A8F522765254E009F86DD /* ProductListViewModel.swift in Sources */,
 				1162E195274A50E1002CE720 /* Models.swift in Sources */,
-				1162E189274A4FDE002CE720 /* ContentView.swift in Sources */,
+				1162E189274A4FDE002CE720 /* LoginPageView.swift in Sources */,
+				116A8F5627667EDC009F86DD /* RegisterPageView.swift in Sources */,
+				11E30980276DEDB700728A3F /* CartViewModel.swift in Sources */,
 				11736DD9274F87640066F9F6 /* WebService.swift in Sources */,
 				1144E25E274E99330039B2C3 /* CustomerViewModel.swift in Sources */,
-				1162E197274A5237002CE720 /* ProductViewModel.swift in Sources */,
+				1162E197274A5237002CE720 /* NewOrderViewModel.swift in Sources */,
+				11E3097E276DE0BA00728A3F /* ProductInfoView.swift in Sources */,
 				112663E3274E559200EF9B33 /* CustomerView.swift in Sources */,
+				11E3097C276CEEBF00728A3F /* CartView.swift in Sources */,
+				116A8F5427667DBC009F86DD /* RegisterViewModel.swift in Sources */,
+				1176048E27510DE300E9CBB6 /* NewOrderView.swift in Sources */,
 				1162E187274A4FDE002CE720 /* BeerFactoryAppApp.swift in Sources */,
-				11736DDB274F9B2D0066F9F6 /* OrderViewModel.swift in Sources */,
+				116A8F502764DBCE009F86DD /* LoginViewModel.swift in Sources */,
+				11736DDB274F9B2D0066F9F6 /* OrderDetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
