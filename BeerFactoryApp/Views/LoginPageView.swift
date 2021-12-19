@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginPageView: View {
-    @StateObject private var loginVM = LoginViewModel()
+    @StateObject private var loginVM = CustomerLoginVM()
     
     var body: some View {
         NavigationView {
@@ -84,9 +84,9 @@ struct LoginPageView: View {
                             .cornerRadius(20)
                             .foregroundColor(.white)
                     }
-
                     
-//                    if (loginVM.isAuthenticated) {
+                    
+                    if (loginVM.isAuthenticated) {
                         NavigationLink {
                             CustomerView()
                         } label: {
@@ -96,10 +96,10 @@ struct LoginPageView: View {
                                 .cornerRadius(20)
                                 .foregroundColor(.white)
                         }
-//                    }
+                    }
                 }
             }
-            .navigationTitle("Пивной завод")
+            .navigationTitle("Вход")
         }
     }
 }

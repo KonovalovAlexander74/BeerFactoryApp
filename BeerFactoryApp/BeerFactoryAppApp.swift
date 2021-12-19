@@ -12,8 +12,9 @@ struct BeerFactoryAppApp: App {
     var body: some Scene {
         WindowGroup {
             LoginPageView()
-//                .environmentObject(ProductViewModel())
-//                .environmentObject(CustomerViewModel())
+                .environmentObject(CustomerVM())
+                .environmentObject(CartVM())
+                .environmentObject(OrdersVM())
         }
     }
 }

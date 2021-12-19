@@ -8,7 +8,7 @@
 import Foundation
 
 
-class RegisterViewModel: ObservableObject {
+class CustomerRegisterVM: ObservableObject {
     @Published var username: String = ""
     @Published var password: String = ""
     @Published var fullName: String = ""

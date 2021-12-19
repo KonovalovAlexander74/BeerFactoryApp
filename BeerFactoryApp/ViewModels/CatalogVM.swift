@@ -37,7 +37,7 @@ class ProductInfoVM: ObservableObject {
     }
 }
 
-class NewOrderVM: ObservableObject {
+class CatalogVM: ObservableObject {
     @Published var products = [ProductVM]()
     
     init() {

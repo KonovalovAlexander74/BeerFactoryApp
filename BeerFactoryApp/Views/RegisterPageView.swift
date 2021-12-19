@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RegisterPageView: View {
-    @StateObject private var registerVM = RegisterViewModel()
+    @StateObject private var registerVM = CustomerRegisterVM()
     
     var body: some View {
         let titles = ["Имя пользователя", "Пароль", "ФИО", "Телефон", "Паспорт"]

@@ -1,164 +1,75 @@
 //
-//  ConsumerView.swift
+//  CustomerView.swift
 //  BeerFactoryApp
 //
-//  Created by Alexander Konovalov on 24.11.2021.
+//  Created by Alexander Konovalov on 19.12.2021.
 //
 
-import Foundation
 import SwiftUI
-import Alamofire
+
+enum CustomerTab: Int {
+    case orders = 0
+    case cart = 1
+    case catalog = 2
+    case personal = 3
+    
+    var rawValues: [Int] {
+        [0, 1, 2, 3]
+    }
+}
 
 struct CustomerView: View {
-    @ObservedObject private var customerVM = CustomerViewModel()
+    let names = ["house", "cart", "list.bullet", "person"]
+    @State var currentTab: CustomerTab = .orders
     
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
+            switch currentTab {
+            case .orders:
+                OrdersView()
+            case .cart:
+                CartView()
+            case .catalog:
+                CatalogView()
+            case .personal:
+                PersonalView()
+            }
             
-            Text("\(customerVM.fullName)")
-//            Text("Струпьянов Александр Владимирович")
-                .padding()
-                .font(.headline)
-                .lineLimit(1)
-                .multilineTextAlignment(.center)
-            
-            ZStack {
-                
-                Form {
-                    Text("Ваши заказы:")
-                        .bold()
-                        .font(.title2)
-                        
-                    
-                    List {
-                        ForEach(customerVM.orders, id: \.id) { order in
-                            NavigationLink {
-                                OrderDetailsView(order: order)
-                            } label: {
-                                HStack {
-                                    Text("Заказ \(order.id)")
-                                    Spacer()
-                                    Text("\(order.status)")
-                                        .font(.caption)
-                                }
-                            }
-                        }
-                    }
-                }
-                
-                VStack {
-                    Spacer()
-                    
-                    NavigationLink {
-                        NewOrderView()
-                    } label: {
-                        Text("Новый заказ")
-                            .font(.title).fontWeight(.bold)
-                            .frame(width: 250, height: 80)
-                            .foregroundColor(.white)
-                            .background(.blue)
-                            .cornerRadius(25)
-                    }
-                }
-                .navigationTitle("Личный кабинет")
-                .toolbar {
-                    NavigationLink {
-                        if let customer = customerVM.customer {
-                            CustomerDetailView(customer: customer)
+            //            Spacer()
+            Divider()
+            HStack {
+                ForEach(currentTab.rawValues, id: \.self) { rawId in
+                    Button {
+                        switch rawId {
+                        case 0:
+                            currentTab = .orders
+                        case 1:
+                            currentTab = .cart
+                        case 2:
+                            currentTab = .catalog
+                        case 3:
+                            currentTab = .personal
+                        default:
+                            currentTab = .orders
                         }
                     } label: {
-                        Image(systemName: "person")
-                    }
-                    
-                }
-            }
-        }
-    }
-}
-
-struct CustomerDetailView: View {
-    private var customer: Customer
-    
-    init(customer: Customer) {
-        self.customer = customer
-    }
-    
-    var body: some View {
-        VStack {
-            Form {
-                HStack {
-                    Text("Имя пользователя: ")
-                    Spacer()
-//                    Text("\(customer.login)")
-                    
-                }
-                HStack {
-                    Text("Полное имя: ")
-                    Spacer()
-                    Text("\(customer.fullName)")
-                    
-                }
-                HStack {
-                    Text("Телефон: ")
-                    Spacer()
-                    Text("\(customer.phoneNumber)")
-                }
-                HStack {
-                    Text("Паспорт: ")
-                    Spacer()
-                    Text("\(customer.passport)")
-                }
-            }
-
-            Spacer()
-        }
-        
-        .navigationTitle("Личная информация")
-    }
-}
-
-struct OrderDetailsView: View {
-    private var order: Order
-
-    @ObservedObject private var orderDetailVM = OrderDetailVM()
-
-    init(order: Order) {
-        self.order = order
-    }
-    
-    var body: some View {
-        ZStack {
-            List {
-                ForEach(orderDetailVM.products, id: \.id) { product in
-                    HStack {
-                        Text("\(product.name)")
                         Spacer()
-                        Text("кол-во: \(product.quantity)")
-                            .font(.caption)
-                            .foregroundColor(.gray)
+                        Image(systemName: names[rawId])
+                            .foregroundColor(currentTab.rawValue == rawId ? .black : .gray)
+                            .font(.system(size: 25))
+                            .padding()
+                        Spacer()
                     }
+                    
+                    
                 }
             }
-            VStack {
-                Spacer()
-                Text("Итого: \(orderDetailVM.getTotalPrice())₽")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding()
-                    .frame(width: 300, alignment: .trailing)
-            }
         }
-        
-        .onAppear {
-            orderDetailVM.initialize(orderId: order.id)
-        }
-        
-        .navigationTitle("Информация о заказе")
+        .navigationBarHidden(true)
     }
 }
 
-
-struct CustomerVew_Preview: PreviewProvider {
+struct CustomerView_Previews: PreviewProvider {
     static var previews: some View {
         CustomerView()
     }

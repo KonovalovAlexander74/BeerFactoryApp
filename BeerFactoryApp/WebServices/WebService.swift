@@ -35,6 +35,7 @@ struct RegisterRequestBody: Codable {
 }
 
 struct RegisterResponse: Codable {
+    let error: Bool?
     let message: String
 }
 
@@ -68,6 +69,42 @@ enum AuthenticationError: Error {
 class WebService {
     static private let prefixUrl = "http://localhost:3010/api"
     
+    static func createNewOrder(token: String, requestBody: CreationOrderBody) {
+        guard let url = URL(string: "\(prefixUrl)/create-order/") else {
+            print("Not found url")
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try? JSONEncoder().encode(requestBody)
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if error != nil {
+                print("error", error?.localizedDescription ?? "")
+                return
+            }
+            
+            do {
+                if let data = data {
+
+                    let result = try JSONDecoder().decode(RegisterResponse.self, from: data)
+
+                    DispatchQueue.main.async {
+                        print(result)
+                    }
+                }
+            } catch let jsonError {
+                print("fetch json error: ", jsonError)
+            }
+            
+            
+            print("New order created!\n")
+            
+        }.resume()
+    }
     
     static func registerCustomer(requestBody: RegisterRequestBody, completion: @escaping (RegisterResponse) -> ()) {
         guard let url = URL(string: "\(prefixUrl)/customer-sign-up/") else {

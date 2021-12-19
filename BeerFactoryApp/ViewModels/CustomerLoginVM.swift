@@ -7,7 +7,7 @@
 
 import Foundation
 
-class LoginViewModel: ObservableObject {
+class CustomerLoginVM: ObservableObject {
     @Published var username: String = ""
     @Published var password: String = ""
     @Published var isAuthenticated: Bool = false

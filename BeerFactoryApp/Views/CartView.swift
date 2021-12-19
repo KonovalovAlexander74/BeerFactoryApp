@@ -8,56 +8,81 @@
 import SwiftUI
 
 struct CartView: View {
-//    @ObservedObject private var cartVM = CartViewModel()
-    @EnvironmentObject var cartVM: CartViewModel
+    @EnvironmentObject var cartVM: CartVM
+    @EnvironmentObject var ordersVM: OrdersVM
     
     var body: some View {
-        VStack {
-            List {
-                //TODO: + и - count, delete
-                ForEach(cartVM.elements, id: \.product.id) { item in
-                    HStack {
-                        VStack {
-                            Text("\(item.product.name)")
-                                .font(.body)
-                            
-                            Spacer().frame(height: 10)
-                            
-                            HStack {
-                                Text("count: ")
-                                    .font(.caption)
-                                    .foregroundColor(.gray)
+        NavigationView {
+            VStack {
+                List {
+                    ForEach(cartVM.elements, id: \.product.id) { item in
+                        HStack {
+                            VStack(spacing: 8) {
+                                Text("\(item.product.name)")
+                                    .font(.body)
                                 
-                                Text("\(item.count)")
-                                    .font(.title3)
+                                HStack {
+                                    Text("кол-во: ")
+                                        .font(.caption)
+                                        .foregroundColor(.gray)
+                                    
+                                    Text("\(item.quantity)")
+                                        .font(.headline)
+                                }
+                            }.frame(width: 140, alignment: .leading)
+                            
+                            Text("цена: \(item.product.price)")
+                                .font(.caption)
+                            
+                            Spacer()
+                            
+                            Stepper("") {
+                                cartVM.increment(element: item)
+                                //                            print("plus")
+                            } onDecrement: {
+                                cartVM.decrement(element: item)
+                                //                            print("minus")
                             }
-                        }.frame(width: 140, alignment: .leading)
-                        
-                        Spacer()
-                        
-                        Stepper("") {
-                            item.count += 1
-//                            cartVM.increment(element: item)
-                            print("plus")
-                        } onDecrement: {
-                            print("minus")
+                            
                         }
-                        
                     }
                 }
-            }
-            .listStyle(.plain)
-            .padding()
-            
-            Text("Total: ")
-                .font(.largeTitle)
-                .fontWeight(.bold)
+                .listStyle(.plain)
                 .padding()
-                .frame(width: 300, alignment: .trailing)
-            
-            Spacer().frame(height: 50)
-            
+                
+                HStack {
+                    Button {
+                        cartVM.createOrder()
+                    } label: {
+                        Text("создать")
+                            .font(.headline)
+                            .bold()
+                            .foregroundColor(.white)
+                            .frame(width: 100, height: 50)
+                            .background(.blue)
+                            .cornerRadius(20)
+                            .padding()
+                    }
+                    
+                    Spacer()
+                    Text("Итого: \(cartVM.total)")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .padding()
+                }
+                
+                
                 .navigationTitle("Корзина")
+                .toolbar {
+                    Button {
+                        cartVM.clear()
+                    } label: {
+                        Image(systemName: "trash")
+                    }
+                    
+                }
+                
+            }
         }
     }
 }
