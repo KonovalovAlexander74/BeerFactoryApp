@@ -10,78 +10,95 @@ import SwiftUI
 struct CartView: View {
     @EnvironmentObject var cartVM: CartVM
     @EnvironmentObject var ordersVM: OrdersVM
+    @FocusState private var isFocused: Bool
     
     var body: some View {
         NavigationView {
-            VStack {
-                List {
-                    ForEach(cartVM.elements, id: \.product.id) { item in
-                        HStack {
-                            VStack(spacing: 8) {
-                                Text("\(item.product.name)")
-                                    .font(.body)
-                                
-                                HStack {
-                                    Text("кол-во: ")
-                                        .font(.caption)
-                                        .foregroundColor(.gray)
+            ZStack {
+                VStack {
+                    List {
+                        ForEach(cartVM.elements, id: \.product.id) { item in
+                            HStack {
+                                VStack(spacing: 8) {
+                                    Text("\(item.product.name)")
+                                        .font(.body)
                                     
-                                    Text("\(item.quantity)")
-                                        .font(.headline)
+                                    HStack {
+                                        Text("кол-во: ")
+                                            .font(.caption)
+                                            .foregroundColor(.gray)
+                                        
+                                        TextField("", text: Binding(
+                                            get: { String(item.quantity) },
+                                            set: {
+                                                cartVM.setQuantity(element: item, newQuantity: Int($0) ?? 1)
+                                            }
+                                        )).keyboardType(.numberPad).focused($isFocused)
+                                    }
+                                }.frame(width: 140, alignment: .leading)
+                                
+                                Text("цена: \(item.product.price)")
+                                    .font(.caption)
+                                
+                                Spacer()
+                                
+                                Stepper("") {
+                                    cartVM.increment(element: item)
+                                } onDecrement: {
+                                    cartVM.decrement(element: item)
                                 }
-                            }.frame(width: 140, alignment: .leading)
-                            
-                            Text("цена: \(item.product.price)")
-                                .font(.caption)
-                            
-                            Spacer()
-                            
-                            Stepper("") {
-                                cartVM.increment(element: item)
-                                //                            print("plus")
-                            } onDecrement: {
-                                cartVM.decrement(element: item)
-                                //                            print("minus")
+                                
                             }
-                            
                         }
                     }
-                }
-                .listStyle(.plain)
-                .padding()
-                
-                HStack {
-                    Button {
-                        cartVM.createOrder()
-                    } label: {
-                        Text("создать")
-                            .font(.headline)
-                            .bold()
-                            .foregroundColor(.white)
-                            .frame(width: 100, height: 50)
-                            .background(.blue)
-                            .cornerRadius(20)
-                            .padding()
+                    .listStyle(.plain)
+                    .padding()
+                    
+                    HStack {
+                        Button {
+                            cartVM.createOrder()
+                        } label: {
+                            Text("создать заказ")
+                                .font(.headline)
+                                .bold()
+                                .foregroundColor(.white)
+                                .frame(width: 140, height: 50)
+                                .background(.blue)
+                                .cornerRadius(20)
+                                .padding()
+                        }
+                        
+                        Spacer()
+                        Text("Итого: \(cartVM.total)")
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .padding(.trailing)
                     }
                     
-                    Spacer()
-                    Text("Итого: \(cartVM.total)")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .padding()
-                }
-                
-                
-                .navigationTitle("Корзина")
-                .toolbar {
-                    Button {
-                        cartVM.clear()
-                    } label: {
-                        Image(systemName: "trash")
+                    
+                    .navigationTitle("Корзина")
+                    .toolbar {
+                        Button {
+                            cartVM.clear()
+                        } label: {
+                            Image(systemName: "trash")
+                        }
+                        
                     }
                     
                 }
                 
+                if isFocused {
+                    VStack {
+                        Spacer()
+                        Button {
+                            isFocused = false
+                        } label: {
+                            Text("Готово").font(.headline)
+                        }
+                        Spacer()
+                    }
+                }
             }
         }
     }

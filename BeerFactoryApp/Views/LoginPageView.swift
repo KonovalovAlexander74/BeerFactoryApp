@@ -75,22 +75,27 @@ struct LoginPageView: View {
                     
                     Spacer().frame(height: 70)
                     
-                    Button {
-                        loginVM.isAuthenticated ? loginVM.signOut() : loginVM.login()
-                    } label: {
-                        Text(loginVM.isAuthenticated ? "Выйти" : "Войти")
-                            .frame(width: 120, height: 60)
-                            .background(.blue)
-                            .cornerRadius(20)
-                            .foregroundColor(.white)
-                    }
+                    
                     
                     
                     if (loginVM.isAuthenticated) {
                         NavigationLink {
                             CustomerView()
+                                .environmentObject(CustomerVM(customer: self.loginVM.customer ?? nil))
+                                .environmentObject(CartVM())
+                                .environmentObject(OrdersVM())
                         } label: {
                             Text("Личный кабинет")
+                                .frame(width: 120, height: 60)
+                                .background(.blue)
+                                .cornerRadius(20)
+                                .foregroundColor(.white)
+                        }
+                    } else {
+                        Button {
+                            loginVM.login()
+                        } label: {
+                            Text("Войти")
                                 .frame(width: 120, height: 60)
                                 .background(.blue)
                                 .cornerRadius(20)
@@ -101,6 +106,7 @@ struct LoginPageView: View {
             }
             .navigationTitle("Вход")
         }
+        
     }
 }
 

@@ -69,6 +69,7 @@ enum AuthenticationError: Error {
 class WebService {
     static private let prefixUrl = "http://localhost:3010/api"
     
+    //MARK: - create New Order
     static func createNewOrder(token: String, requestBody: CreationOrderBody) {
         guard let url = URL(string: "\(prefixUrl)/create-order/") else {
             print("Not found url")
@@ -106,6 +107,7 @@ class WebService {
         }.resume()
     }
     
+    //MARK: - Register Customer
     static func registerCustomer(requestBody: RegisterRequestBody, completion: @escaping (RegisterResponse) -> ()) {
         guard let url = URL(string: "\(prefixUrl)/customer-sign-up/") else {
             print("Not found url")
@@ -351,6 +353,28 @@ class WebService {
                 }
             } catch let jsonError {
                 print("fetch json error: ", jsonError.localizedDescription)
+            }
+        }.resume()
+    }
+    
+    //MARK: - Create new Review
+    static func createReview(token: String, requestBody: ReviewBody) {
+        guard let url = URL(string: "\(prefixUrl)/create-review/") else {
+            print("not found url")
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try? JSONEncoder().encode(requestBody)
+        
+
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if error != nil {
+                print("error", error?.localizedDescription ?? "")
+                return
             }
         }.resume()
     }

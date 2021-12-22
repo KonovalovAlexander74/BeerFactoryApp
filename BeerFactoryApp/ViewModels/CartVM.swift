@@ -23,7 +23,7 @@ class CartVM: ObservableObject {
     @Published var total: Int = 0
     @Published var elements = [CartElementVM]()
     
-    func addProduct(product: ProductVM) {// TODO:
+    func addProduct(product: ProductVM) {
         elements.append(CartElementVM(product: product))
         total += product.price
     }
@@ -31,6 +31,12 @@ class CartVM: ObservableObject {
     func increment(element: CartElementVM) {
         element.quantity += 1
         total += element.product.price
+    }
+    
+    func setQuantity(element: CartElementVM, newQuantity: Int) {
+        guard (newQuantity < 1000) else { return }
+        element.quantity = newQuantity
+        total = element.product.price * newQuantity
     }
     
     func decrement(element: CartElementVM) {

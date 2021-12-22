@@ -8,6 +8,15 @@
 import Foundation
 import SwiftUI
 
+
+struct ReviewBody: Codable {
+    let customerId: Int
+    let productId: Int
+    let review: String
+    let rate: Double
+    let date: String
+}
+
 class ProductInfoVM: ObservableObject {
     @Published var productInfo: ProductInfo?
     
@@ -17,6 +26,23 @@ class ProductInfoVM: ObservableObject {
             WebService.getProductInfo(token: token, productId: productId) { info in
                 self.productInfo = info;
             }
+        }
+    }
+    
+    func createReview(review: String, rate: Double, date: Date) {
+        guard !review.isEmpty else { return }
+        
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "nl_NL")
+        formatter.dateFormat = "yyyy-MM-dd"
+        let formDate = formatter.string(from: .now)
+        
+        let defaults = UserDefaults.standard
+        let customerId = defaults.integer(forKey: "customerId")
+        if let token = defaults.string(forKey: "userToken") {
+            let body = ReviewBody(customerId: customerId, productId: productInfo!.product.id, review: review, rate: rate, date:  formDate)
+            print(body)
+            WebService.createReview(token: token, requestBody: body)
         }
     }
     
