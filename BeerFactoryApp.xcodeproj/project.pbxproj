@@ -70,6 +70,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		110466F727735B5A009947C9 /* Customer */ = {
+			isa = PBXGroup;
+			children = (
+				116A8F4D2764D621009F86DD /* Views */,
+				11736DDC274F9B380066F9F6 /* ViewModels */,
+			);
+			path = Customer;
+			sourceTree = "<group>";
+		};
+		110466F827735BFB009947C9 /* Employee */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Employee;
+			sourceTree = "<group>";
+		};
 		1162E17A274A4FDE002CE720 = {
 			isa = PBXGroup;
 			children = (
@@ -93,10 +109,11 @@
 			children = (
 				1162E198274A5C0C002CE720 /* Info.plist */,
 				1162E186274A4FDE002CE720 /* BeerFactoryAppApp.swift */,
+				1162E188274A4FDE002CE720 /* LoginPageView.swift */,
 				11736DD7274F87440066F9F6 /* WebServices */,
-				11736DDC274F9B380066F9F6 /* ViewModels */,
-				116A8F4D2764D621009F86DD /* Views */,
 				116A8F4E2764D637009F86DD /* Models */,
+				110466F827735BFB009947C9 /* Employee */,
+				110466F727735B5A009947C9 /* Customer */,
 				1162E18A274A4FE1002CE720 /* Assets.xcassets */,
 				1162E18C274A4FE1002CE720 /* Preview Content */,
 			);
@@ -115,7 +132,6 @@
 			isa = PBXGroup;
 			children = (
 				11899E0B276F2B40008CF0F0 /* Tabs */,
-				1162E188274A4FDE002CE720 /* LoginPageView.swift */,
 				11E3097D276DE0BA00728A3F /* ProductInfoView.swift */,
 				116A8F5527667EDC009F86DD /* RegisterPageView.swift */,
 			);

@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct LoginPageView: View {
-    @StateObject private var loginVM = CustomerLoginVM()
+//    @StateObject private var loginVM = CustomerLoginVM()
+    @EnvironmentObject var loginVM: CustomerLoginVM
     
     var body: some View {
         NavigationView {

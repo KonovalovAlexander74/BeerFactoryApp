@@ -11,7 +11,7 @@ class CustomerLoginVM: ObservableObject {
     @Published var username: String = ""
     @Published var password: String = ""
     @Published var isAuthenticated: Bool = false
-     var customer: Customer?
+    var customer: Customer?
     
     func login() {
         let defaults = UserDefaults.standard
@@ -45,6 +45,9 @@ class CustomerLoginVM: ObservableObject {
         defaults.removeObject(forKey: "userId")
         defaults.removeObject(forKey: "customerId")
         DispatchQueue.main.async {
+            self.username = ""
+            self.password = ""
+            self.customer = nil
             self.isAuthenticated = false
         }
     }

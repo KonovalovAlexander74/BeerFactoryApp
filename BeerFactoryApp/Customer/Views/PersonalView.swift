@@ -10,6 +10,8 @@ import SwiftUI
 
 struct PersonalView: View {
     @EnvironmentObject var customerVM: CustomerVM
+    @EnvironmentObject var loginVM: CustomerLoginVM
+    @State private var isSignOut = false
     
     var body: some View {
         VStack {
@@ -30,6 +32,21 @@ struct PersonalView: View {
                     Spacer()
                     Text("\(customerVM.customer?.passport ?? "")")
                 }
+            }
+            
+            Spacer()
+            
+            NavigationLink(isActive: $isSignOut) {
+                LoginPageView()
+            } label: {
+                EmptyView()
+            }
+            
+            Button {
+                loginVM.signOut()
+                isSignOut = true
+            } label: {
+                Text("Выйти").font(.headline).foregroundColor(.red)
             }
             
             Spacer()
