@@ -14,7 +14,6 @@ class OrderDetailVM: ObservableObject {
     
     func initialize(orderId: Int) {
         let defaults = UserDefaults.standard
-        
         guard let token = defaults.string(forKey: "userToken") else { return }
         
         WebService.getOrderProducts(token: token, orderId: orderId) { products in
@@ -30,6 +29,14 @@ class OrderDetailVM: ObservableObject {
         }
         
         return sum
+    }
+    
+    func payOrder(_ id: Int) {
+        let defaults = UserDefaults.standard
+        if let token = defaults.string(forKey: "userToken") {
+            WebService.payOrder(token: token, orderId: id)
+            initialize(orderId: id)
+        }
     }
 }
 

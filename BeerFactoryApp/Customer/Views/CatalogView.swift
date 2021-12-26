@@ -30,7 +30,7 @@ struct CatalogView: View {
                                 .foregroundColor(.gray)
                                 .font(.caption)
                         }
-                        .frame(height: 100)
+                        .frame(height: 80)
                     }
                     .listStyle(.inset)
                 }
@@ -39,15 +39,6 @@ struct CatalogView: View {
             }
         }
     }
-    
-    //    var cartButton: some View {
-    //        NavigationLink {
-    //            CartView()
-    //                .environmentObject(cartVM)
-    //        } label: {
-    //            Image(systemName: "cart")
-    //        }
-    //    }
 }
 
 //struct NewOrderTestView: View {

@@ -1,15 +1,15 @@
 //
-//  PersonalTabView.swift
+//  EmployeePersonal.swift
 //  BeerFactoryApp
 //
-//  Created by Alexander Konovalov on 19.12.2021.
+//  Created by Alexander Konovalov on 25.12.2021.
 //
 
+import Foundation
 import SwiftUI
 
-
-struct PersonalView: View {
-    @EnvironmentObject var customerVM: CustomerVM
+struct EmployeePersonalView: View {
+    @EnvironmentObject var employeeVM: EmployeePersonalVM
     @EnvironmentObject var loginVM: LoginVM
     @State private var isSignOut = false
     
@@ -19,18 +19,23 @@ struct PersonalView: View {
                 HStack {
                     Text("Полное имя: ")
                     Spacer()
-                    Text("\(customerVM.customer?.fullName ?? "")")
+                    Text("\(employeeVM.employee?.fullName ?? "")")
                     
                 }
                 HStack {
                     Text("Телефон: ")
                     Spacer()
-                    Text("\(customerVM.customer?.phoneNumber ?? "")")
+                    Text("\(employeeVM.employee?.phoneNumber ?? "")")
                 }
                 HStack {
                     Text("Паспорт: ")
                     Spacer()
-                    Text("\(customerVM.customer?.passport ?? "")")
+                    Text("\(employeeVM.employee?.passport ?? "")")
+                }
+                HStack {
+                    Text("Зарплата: ")
+                    Spacer()
+                    Text(String(format: "%.2f", employeeVM.employee?.salary ?? 0))
                 }
             }
             
@@ -43,7 +48,7 @@ struct PersonalView: View {
             }
             
             Button {
-                loginVM.signOutCustomer()
+                loginVM.signOutEmployee()
                 isSignOut = true
             } label: {
                 Text("Выйти").font(.headline).foregroundColor(.red)
@@ -55,9 +60,3 @@ struct PersonalView: View {
         .navigationTitle("Личная информация")
     }
 }
-
-//struct PersonalTabView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PersonalView()
-//    }
-//}

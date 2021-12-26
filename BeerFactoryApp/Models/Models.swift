@@ -8,6 +8,26 @@
 import Foundation
 import SwiftUI
 
+//MARK: - Product info
+struct ProductInfo: Codable {
+    let error: Bool
+    let message: String
+    let product: Product
+    let ingredients: [Ingredient]
+    let reviews: [Review]
+}
+
+struct Ingredient: Codable {
+    let name: String
+    let quantity: Int
+}
+        
+struct Review: Codable {
+    let id: Int
+    let customer: String
+    let review: String
+    let rate: Double
+}
 
 //MARK: Product
 struct ProductData: Codable {
@@ -38,6 +58,24 @@ struct OrderProduct: Codable {
     let quantity: Int
 }
 
+//MARK: Employee
+struct EmployeeResponse: Codable {
+    let error: Bool
+    let message: String
+    let data: Employee
+}
+
+struct Employee: Codable {
+    let id: Int
+    let userId: Int
+    let positionId: Int
+    let fullName: String
+    let birthDate: String
+    let phoneNumber: String
+    let passport: String
+    let salary: Double
+}
+
 //MARK: Customer
 struct CustomerData: Codable {
     let error: Bool
@@ -56,8 +94,8 @@ struct Customer: Codable {
 //MARK: Order
 struct OrderData: Codable {
     let error: Bool
-    let message: String
-    let data: [Order]
+    let message: String?
+    let data: [Order]?
 }
 
 struct Order: Codable {

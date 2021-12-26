@@ -36,13 +36,16 @@ struct OrdersView: View {
                 
                 .navigationTitle("Заказы")
             }
+            .onAppear {
+                self.ordersVM.fetchOrders()
+            }
         }
     }
 }
 
 struct OrderDetailsView: View {
     private var order: Order
-    
+    @State private var isPayed = false
     @ObservedObject private var orderDetailVM = OrderDetailVM()
     
     init(order: Order) {
@@ -62,18 +65,38 @@ struct OrderDetailsView: View {
                     }
                 }
             }
+            
             VStack {
                 Spacer()
-                Text("Итого: \(orderDetailVM.getTotalPrice())₽")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding()
-                    .frame(width: 300, alignment: .trailing)
+                HStack {
+                        Button {
+                            isPayed = true
+                            orderDetailVM.payOrder(order.id)
+                            print("Статус заказа изменен")
+                        } label: {
+                            Text("Оплатить")
+                                .foregroundColor(.white)
+                                .frame(width: 100, height: 60)
+                                .background(.blue)
+                                .cornerRadius(10)
+                                .padding()
+                                .opacity(isPayed ? 0 : 1)
+                        }
+                    
+                    Text("Итого: \(orderDetailVM.getTotalPrice())₽")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .frame(width: 200, alignment: .trailing)
+                        .padding()
+                        
+                }
             }
+            
         }
         
         .onAppear {
             orderDetailVM.initialize(orderId: order.id)
+            isPayed = order.status == "Оплачен" || order.status == "Завершен"
         }
         
         .navigationTitle("Детали заказа")

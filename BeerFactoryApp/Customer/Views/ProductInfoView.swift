@@ -39,7 +39,7 @@ struct StarRating: View {
     }
 }
 
-struct TextFieldAlert: View {
+struct ReviewAlert: View {
     let screenSize = UIScreen.main.bounds
     
     var title: String
@@ -95,7 +95,7 @@ struct TextFieldAlert: View {
 }
 
 
-struct ProductInfoView: View { // TODO: Красиво все сделать
+struct ProductInfoView: View {
     private var product: ProductVM
     @ObservedObject private var productInfoVM = ProductInfoVM()
     @EnvironmentObject var cartVM: CartVM
@@ -120,9 +120,17 @@ struct ProductInfoView: View { // TODO: Красиво все сделать
                     }
                     
                     Section("Состав") {
-                        ForEach(productInfoVM.ingredients, id: \.name) { ingredient in
-                            Text("\(ingredient.name)")
+                        DisclosureGroup {
+                            ForEach(productInfoVM.ingredients, id: \.name) { ingredient in
+                                Text("\(ingredient.name)")
+                            }
+                        } label: {
+                            Text("Ингредиенты")
+                                .foregroundColor(.black)
+                                .font(.headline)
+                                .lineLimit(1)
                         }
+                        
                     }
                     
                     Section("Отзывы") {
@@ -141,8 +149,14 @@ struct ProductInfoView: View { // TODO: Красиво все сделать
                                 HStack {
                                     Spacer()
                                     VStack {
-                                        Text(review.customer).font(.title3).frame(alignment: .leading).lineLimit(1)
-                                        Text(review.review).font(.body)
+                                        DisclosureGroup {
+                                            Text(review.review)
+                                        } label: {
+                                            Text(review.customer)
+                                                .foregroundColor(.black)
+                                                .font(.headline)
+                                                .lineLimit(1)
+                                        }
                                     }
                                     Spacer()
                                 }
@@ -172,7 +186,7 @@ struct ProductInfoView: View { // TODO: Красиво все сделать
                     .foregroundColor(.white)
             }
             
-            TextFieldAlert(title: "Новый отзыв", isShown: $isReview) { review, rate in
+            ReviewAlert(title: "Новый отзыв", isShown: $isReview) { review, rate in
                 self.productInfoVM.createReview(review: review, rate: rate, date: Date.now)
             }
             
@@ -194,7 +208,7 @@ struct ProductInfoView: View { // TODO: Красиво все сделать
         }
     }
 }
-//
+
 //struct ProductInfoTestView: View {
 //    @State private var isReview = false
 //    @State private var text: String = ""

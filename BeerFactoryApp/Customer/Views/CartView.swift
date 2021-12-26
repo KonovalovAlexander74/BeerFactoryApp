@@ -66,6 +66,7 @@ struct CartView: View {
                                 .background(.blue)
                                 .cornerRadius(20)
                                 .padding()
+                                .opacity(cartVM.elements.isEmpty ? 0 : 1)
                         }
                         
                         Spacer()

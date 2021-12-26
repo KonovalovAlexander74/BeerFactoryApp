@@ -43,6 +43,8 @@ class ProductInfoVM: ObservableObject {
             let body = ReviewBody(customerId: customerId, productId: productInfo!.product.id, review: review, rate: rate, date:  formDate)
             print(body)
             WebService.createReview(token: token, requestBody: body)
+            
+            initialize(productId: productInfo!.product.id)
         }
     }
     
